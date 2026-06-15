@@ -1,7 +1,7 @@
 ---
 draft: false
 name: "Brian Fields"
-title: "Flooring & Maintenance"
+title: "Warranty, Repair, & Maintanence"
 avatar: {
     src: "https://i.postimg.cc/9QJ9shTs/brianfields.jpg",
     alt: "Brian Fields"
