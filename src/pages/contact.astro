@@ -1,0 +1,37 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+---
+
+<Layout title="Contact Southard Homes">
+    <Container>
+        <div class="bg-cover bg-center py-28 drop-shadow-sm" id="aboutBg">
+            <Sectionhead>
+                <Fragment slot="title">Contact Us</Fragment>
+                <Fragment slot="desc"></Fragment>
+            </Sectionhead>
+        </div>
+
+        <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+            <p class="text-lg leading-relaxed text-slate-500 text-center">
+            Have questions about our homes, floorplans, or services? We're here to help! <br/>
+            Whether you're interested in buying, building, or just want to learn more about what we do, 
+            feel free to reach out. <br/>
+            Call us at 
+            <a href="tel:812-243-2759" target="_blank" class="text-[#ffca28] font-bold">812-243-2759</a> 
+            or email us at <a href="mailto:southardhomesllc@gmail.com" target="_blank" class="text-[#ffca28] font-bold">southardhomesllc@gmail.com</a> <br/>
+            Rather talk in person? Visit us at our office located at 
+            <a href="https://www.google.com/maps/place/Quality+Roofing+of+Indiana+LLC/@39.506166,-87.3578661,16.08z/data=!4m15!1m8!3m7!1s0x886d6f0d0c4b7d15:0x6cc6999bde4fc2d3!2s3601+N+Fruitridge+Ave,+Terre+Haute,+IN+47805!3b1!8m2!3d39.5067736!4d-87.3592257!16s%2Fg%2F11b8ykv3hc!3m5!1s0x886d6538bbc3ef89:0xc7b6ca6e504ca6b1!8m2!3d39.5067863!4d-87.3590875!16s%2Fg%2F11k7wkpq3d?hl=en&entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-[#ffca28] font-bold">
+                3601 N. Fruitridge Avenue, Terre Haute, IN 47805</a>. <br/>
+            We look forward to connecting with you!
+            </p>
+        </div>
+    </Container>
+</Layout>
+
+<style>
+  #aboutBg {
+    background-image: url("/about-banner.jpg");
+  }
+</style>
