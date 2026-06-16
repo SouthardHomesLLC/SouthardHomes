@@ -13,8 +13,6 @@ const menuitems = [
       { title: "Homes for Sale", path: "/homes-for-sale/"},
       { title: "Rental Homes", path: "/homes-for-rent/" },
       { title: "Rent-to-Own (RTO)", path: "/homes-for-rto/" },
-      // { title: "Locations & Floor Plans", path: "/404" },
-      
     ],
   },
   {
@@ -25,10 +23,6 @@ const menuitems = [
     title: "About Us",
     path: "/about/",
   },
-  // {
-  //   title: "Our Services",
-  //   path: "/pricing",
-  // },
   {
     title: "Newsroom",
     path: "/blog/",
@@ -36,91 +30,110 @@ const menuitems = [
 ];
 ---
 
-<Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center bg-[#000000]">
-    <Astronav>
-      <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg"
-          >
-<span class="font-bold font-serif uppercase justify-center">
-    <img class="size-44 m-auto brightness-115" src="/logo.png" aria-label="Southard Homes LLC" alt="Southard Homes LLC" id="logo">
-        <!-- <div class="">
-      Southard Homes</span><span
-                class="text-xs mx-0 px-0 leading-tight"> LLC</span
-              > -->
-      <!-- </div> -->
-        </a>
-        <div class="block lg:hidden">
-          <MenuIcon class="w-8 h-8 text-gray-800" />
+<div class="w-full bg-[#000000]">
+  <Container>
+    <header class="flex flex-col lg:flex-row justify-between items-center py-2 bg-[#000000]">
+      <Astronav>
+        <!-- Logo and Mobile Toggle Row -->
+        <div class="flex w-full lg:w-auto items-center justify-between px-4 lg:px-0">
+          <a href="/" class="flex items-center">
+            <img 
+              class="h-32 w-auto object-contain brightness-115" 
+              src="/logo.png" 
+              aria-label="Southard Homes LLC" 
+              alt="Southard Homes LLC" 
+              id="logo"
+            />
+          </a>
+          <div class="block lg:hidden">
+            <MenuIcon class="w-8 h-8 text-white hover:text-[#ffca28] transition-colors" />
+          </div>
         </div>
-      </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0 pb-4 bg-[#000000]"> 
-        <ul class="flex flex-col lg:flex-row lg:gap-3">
-          {
-            menuitems.map((item, index) => (
-              <>
-                {item.children && (
-                  <Dropdown
-                    title={item.title}
-                    children={item.children}
-                    lastItem={index === menuitems.length - 1}
-                  />
-                )}
+        
+        <!-- Collapsible Navigation Area -->
+        <MenuItems class="hidden lg:flex lg:items-center w-full lg:w-auto mt-4 lg:mt-0 pb-4 lg:pb-0 bg-[#000000]">
+          <ul class="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-6 px-4 lg:px-0">
+            {
+              menuitems.map((item, index) => (
+                <>
+                  {item.children && (
+                    <Dropdown
+                      title={item.title}
+                      children={item.children}
+                      lastItem={index === menuitems.length - 1}
+                    />
+                  )}
 
-                {!item.children && (
-                  <li>
-                    <a
-                      href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-[#ffca28]">
-                      <span> {item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-                          New
-                        </span>
-                      )}
-                    </a>
-                  </li>
-                )}
-              </>
-            ))
-          }
-        </ul>
-        <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="https://southardhomesllc.app.doorloop.com/auth/login" id="renters" target="_blank" block size="md">
-            <img src="/brandeddl.png" alt="Doorloop Renter Portal" class="object-contain h-30 w-40 m-auto"/>
-          </Link>
-          <Link id="contact" href="tel:812-243-2759" size="md" block>Contact Us</Link>
+                  {!item.children && (
+                    <li>
+                      <a
+                        href={item.path}
+                        class="flex py-2 items-center text-gray-200 hover:text-[#ffca28] font-medium transition-colors"
+                      >
+                        <span>{item.title}</span>
+                      </a>
+                    </li>
+                  )}
+                </>
+              ))
+            }
+          </ul>
+          
+          <!-- Mobile Specific Actions Panel -->
+          <div class="lg:hidden flex flex-col items-left mt-2 gap-4 px-4">
+            <Link id="contact-mobile" href="/contact/" size="md" block>Contact Us</Link>
+          </div>
+        </MenuItems>
+          
+      </Astronav>
+      
+      <!-- Desktop Specific Actions Panel -->
+      <div class="hidden lg:flex items-center gap-6 text-white">
+        <div class="flex items-center gap-4 text-xl">
+          <a href="https://www.facebook.com/p/Southard-Homes-LLC-61564654631774/" class="hover:text-[#ffca28] transition-colors" aria-label="Facebook">
+            <Icon name="simple-icons:facebook" />
+          </a>
+          <a href="https://www.instagram.com/southardhomes.llc/" class="hover:text-[#ffca28] transition-colors" aria-label="Instagram">
+            <Icon name="simple-icons:instagram" />
+          </a>
+          <a href="https://www.tiktok.com/@southardhomesllc/" class="hover:text-[#ffca28] transition-colors" aria-label="TikTok">
+            <Icon name="simple-icons:tiktok" />
+          </a>
         </div>
-      </MenuItems>
-    </Astronav>
-    <div>
-      <div class="hidden lg:flex items-center gap-4">
-          <a href="https://www.facebook.com/p/Southard-Homes-LLC-61564654631774/">
-            <Icon name="simple-icons:facebook" /></a>
-          <a href="https://www.instagram.com/southardhomes.llc/"><Icon name="simple-icons:instagram" /></a>
-          <a href="https://www.tiktok.com/@southardhomesllc/"><Icon name="simple-icons:tiktok" /></a>
-          <!-- <a href="https://southardhomesllc.app.doorloop.com/auth/login" class="text-sensible-gray" target="_blank">Rentals</a>  -->
-        <Link id="call" href="tel:8122432759" size="lg">Contact Us</Link>
+        <Link id="contact-desktop" href="/contact/" size="lg">Contact Us</Link>
       </div>
-    </div>
-  </header>
-</Container>
+    </header>
+  </Container>
+</div>
 
 <style>
-
-  #call {
-    border: solid #ffca28!important;
+  /* Desktop Button Default Styles */
+  #contact-desktop {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff !important;
+    transition: all 0.3s ease;
   }
 
-  #contact {
-    font-size:x-large;
-    background-color: #ffca28;
-    color: rgba(0, 0, 0, 0.842);
+  #contact-desktop:hover {
+    background-color: #f3f4f6;
+    color: #000000;
+    border-color: #ffca28 !important;
+  }
+
+  /* Mobile Button Styles */
+  #contact-mobile {
+    font-size: large;
+    background-color: #ffffff;
+    color: #000000;
     font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    width: 7em;
   }
 
-  #renters {
-    border: none;
+  #contact-mobile:hover {
+    background-color: #f3f4f6; /* Soft off-white for tap feedback */
+    border-color: #ffca28 !important;
   }
-
 </style>
