@@ -3,17 +3,33 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import { v2 as cloudinary } from 'cloudinary';
-import dotenv from 'dotenv'; 
 
-//Force load root local .env file manually so Node and Vite are perfectly synchronized
-dotenv.config();
+//Load environment variables from .env file
+const rawUrl = import.meta.env.CLOUDINARY_URL || process.env.CLOUDINARY_URL || '';
 
-//Safely resolve the environment context on both Windows and Netlify Build Servers
-const cloudName = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME || process.env.PUBLIC_CLOUDINARY_CLOUD_NAME;
-const apiKey = import.meta.env.PUBLIC_CLOUDINARY_API_KEY || process.env.PUBLIC_CLOUDINARY_API_KEY;
-const apiSecret = import.meta.env.CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET;
+let cloudName = '';
+let apiKey = '';
+let apiSecret = '';
 
-// Define an interface for gallery items
+//Set up Cloudinary credentials from CLOUDINARY_URL if available
+if (rawUrl && rawUrl.startsWith('cloudinary://')) {
+  const cleanUrl = rawUrl.replace('cloudinary://', '');
+  const [credentials, cloud] = cleanUrl.split('@');
+  const [key, secret] = credentials.split(':');
+  
+  cloudName = cloud;
+  apiKey = key;
+  apiSecret = secret;
+}
+
+//If CLOUDINARY_URL is not set or is invalid, fall back to individual environment variables
+if (!cloudName) {
+  cloudName = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME || process.env.PUBLIC_CLOUDINARY_CLOUD_NAME || '';
+  apiKey = import.meta.env.PUBLIC_CLOUDINARY_API_KEY || process.env.PUBLIC_CLOUDINARY_API_KEY || '';
+  apiSecret = import.meta.env.CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET || '';
+}
+
+//Define an interface for gallery items
 interface GalleryItem {
   url: string;
   largeUrl: string;
@@ -21,6 +37,7 @@ interface GalleryItem {
   date: Date;
 }
 
+//Inject variables straight into the configuration instance
 cloudinary.config({
   cloud_name: cloudName,
   api_key: apiKey,
@@ -36,7 +53,6 @@ const { resources } = await cloudinary.search
   .execute();
 
 const galleryItems: GalleryItem[] = resources.map((image: any) => {
-  // Replace the '/upload/' segment of the URL with optimization parameters
   const optimizedUrl = image.secure_url.replace(
     '/upload/',
     '/upload/c_scale,w_400,h_400,f_auto,q_auto/' 
