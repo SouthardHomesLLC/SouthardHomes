@@ -71,5 +71,4 @@ Learn more or schedule a showing at www.southardhomesllc.com
 
 #### Author
 
-Developed and maintained by Kristen Swaim
-Web Design • Front-End Development • Content Strategy
+Developed by Kristen Swaim and updated/maintained by Anthony Felker
