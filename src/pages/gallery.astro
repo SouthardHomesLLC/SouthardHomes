@@ -8,11 +8,12 @@ import dotenv from 'dotenv';
 //Force load root local .env file manually so Node and Vite are perfectly synchronized
 dotenv.config();
 
+//Safely resolve the environment context on both Windows and Netlify Build Servers
 const cloudName = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME || process.env.PUBLIC_CLOUDINARY_CLOUD_NAME;
 const apiKey = import.meta.env.PUBLIC_CLOUDINARY_API_KEY || process.env.PUBLIC_CLOUDINARY_API_KEY;
 const apiSecret = import.meta.env.CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET;
 
-//Define an interface for gallery items
+// Define an interface for gallery items
 interface GalleryItem {
   url: string;
   largeUrl: string;
@@ -35,10 +36,10 @@ const { resources } = await cloudinary.search
   .execute();
 
 const galleryItems: GalleryItem[] = resources.map((image: any) => {
-  //Replace the '/upload/' segment of the URL with optimization parameters
+  // Replace the '/upload/' segment of the URL with optimization parameters
   const optimizedUrl = image.secure_url.replace(
     '/upload/',
-    '/upload/c_scale,h_400,f_auto,q_auto/' //Adjust width (w_400), format (f_auto), and quality (q_auto) as needed
+    '/upload/c_scale,w_400,h_400,f_auto,q_auto/' 
   );
 
   return {
