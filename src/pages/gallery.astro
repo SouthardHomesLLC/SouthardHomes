@@ -8,6 +8,10 @@ import dotenv from 'dotenv';
 //Force load root local .env file manually so Node and Vite are perfectly synchronized
 dotenv.config();
 
+const cloudName = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME || process.env.PUBLIC_CLOUDINARY_CLOUD_NAME;
+const apiKey = import.meta.env.PUBLIC_CLOUDINARY_API_KEY || process.env.PUBLIC_CLOUDINARY_API_KEY;
+const apiSecret = import.meta.env.CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET;
+
 //Define an interface for gallery items
 interface GalleryItem {
   url: string;
@@ -17,9 +21,9 @@ interface GalleryItem {
 }
 
 cloudinary.config({
-  cloud_name: import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME,
-  api_key: import.meta.env.PUBLIC_CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET || import.meta.env.CLOUDINARY_API_SECRET,
+  cloud_name: cloudName,
+  api_key: apiKey,
+  api_secret: apiSecret,
   secure: true
 });
 
