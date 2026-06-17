@@ -2,9 +2,6 @@
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
-import '@fontsource/source-sans-pro';
-import '@fontsource/belleza';
-import '@fontsource/libre-caslon-display';
 
 export interface Props {
   title: string;
@@ -13,7 +10,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg", //take pic of website once finished and replace here!
+  "/opengraph.jpg", 
   Astro.site
 ).toString();
 
@@ -21,7 +18,7 @@ const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "Southard Homes LLC"
-  : "Southard Homes LLC - Homes for Sale, Houses for Rent, and Rent-to-Own (RTO) in Terre Haute, Indiana"; //Update if needed!
+  : "Southard Homes LLC - Homes for Sale, Houses for Rent, and Rent-to-Own (RTO) in Terre Haute, Indiana"; 
 ---
 
 <!DOCTYPE html>
@@ -35,15 +32,12 @@ const makeTitle = title
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta property="og:image" content="https://southardhomesllc.com/opengraph.jpg" />
 
-
-    <!-- Web Analytics -->
-    <script data-goatcounter="https://southard-analytics.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script is:inline data-goatcounter="https://southard-analytics.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script>
-      // Only load on production environment.
       if (window.location.host !== 'southardhomesllc.com')
           window.goatcounter = {no_onload: true}
-  </script>
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    </script>
+    
     <SEO
       title={makeTitle}
       description="Southard Homes LLC is a local family-owned real estate, property development, and residential construction company serving the Wabash Valley since 2019. Looking for homes for sale, homes for rent, or rent to own (RTO) opportunities? Call us today!"
@@ -69,14 +63,14 @@ const makeTitle = title
   <body>
     
     <div class="top-0 w-screen z-50 bg-[#000000] shadow-lg">
-    <Navbar />
-  </div>
-</div>
+      <Navbar />
+    </div>
+
     <slot />
+    
     <Footer />
+    
     <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
       }
@@ -84,12 +78,13 @@ const makeTitle = title
       body {
         background-image: linear-gradient(black, #424036);
         color: #ffffff;
+        min-height: 100vh;
       }
 
       a[href^="mailto:"] {
-  color: #ffca28 !important;
-  text-decoration: underline;
-}
+        color: #ffca28 !important;
+        text-decoration: underline;
+      }
     </style>
   </body>
 </html>

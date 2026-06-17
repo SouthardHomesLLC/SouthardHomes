@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
@@ -7,8 +7,8 @@ import Sectionhead from "@components/sectionhead.astro";
 import Image from "astro/components/Image.astro";
 
 // Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
+const publishedTeamMembers: CollectionEntry<"team">[] = await getCollection("team", (entry: CollectionEntry<"team">) => {
+  return !entry.data.draft && entry.data.publishDate < new Date();
 });
 ---
 

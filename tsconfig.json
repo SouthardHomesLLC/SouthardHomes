@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0", //Ignore deprecation warnings for Astro 6.0
     "baseUrl": "src",
     "strictNullChecks": true,
     "types": ["astro/client"],
