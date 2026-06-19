@@ -14,7 +14,8 @@ import { sortedGallery } from "@scripts/gallery-scripts.ts";
       </Sectionhead>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="photo-gallery">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+      id="photo-gallery">
       {sortedGallery.map((item) => (
         <a 
           href={item.largeUrl} 
