@@ -29,6 +29,7 @@ const {
   />
     <!-- Floating Action Buttons -->
     <div class="absolute top-2 right-2 flex flex-col items-end space-y-2">
+      <!-- Floor Plans -->
       {floorplanLink && (
         <div>
           <a
@@ -36,7 +37,9 @@ const {
             title="2D Floorplan"
             target="_blank"
             rel="noopener"
-            class="relative bg-white bg-opacity-80 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
+            class="relative bg-white bg-opacity-80 text-black p-2 
+              rounded-full hover:bg-opacity-90 transition flex 
+              items-center justify-center group"
             aria-label="View 2D floorplan"
           >
           <Icon
@@ -44,7 +47,8 @@ const {
             class="w-12 h-12 text-[#ffca28] transition-colors duration-300 rounded-lg
               p-1 border-opacity-50 
               group-hover:border-[#ffca28] group-hover:border-opacity-100 
-              group-hover:border-2 group-hover:scale-125 group-hover:transition group-hover:duration-500"
+              group-hover:border-2 group-hover:scale-125 
+              group-hover:transition group-hover:duration-500"
           />
           <span class="absolute text-sm font-bold">
             2D
@@ -60,15 +64,18 @@ const {
             title="3D Floorplan"
             target="_blank"
             rel="noopener"
-            class="relative bg-white bg-opacity-70 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
+            class="relative bg-white bg-opacity-70 text-black p-2 
+              rounded-full hover:bg-opacity-90 transition flex 
+              items-center justify-center group"
             aria-label="View 3D floorplan"
           >
             <Icon
               name="mdi:set-square"
               class="w-12 h-12 text-[#ffca28] transition-colors duration-300 rounded-lg
-              p-1 border-opacity-50 
-              group-hover:border-[#ffca28] group-hover:border-opacity-100 
-              group-hover:border-2 group-hover:scale-125 group-hover:transition group-hover:duration-500"
+                p-1 border-opacity-50 
+                group-hover:border-[#ffca28] group-hover:border-opacity-100 
+                group-hover:border-2 group-hover:scale-125 
+                group-hover:transition group-hover:duration-500"
             />
             <span class="absolute text-sm font-bold">
               3D
