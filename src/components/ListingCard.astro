@@ -30,47 +30,51 @@ const {
         >
           <Icon
             name="fluent:video-clip-20-filled"
-            class="w-10 h-10 drop-shadow-lg text-white group-hover:text-[#ffca28] transition-colors duration-300"
+            class="w-10 h-10 drop-shadow-lg text-white group-hover:text-[#ffca28] transition-colors duration-300 hover:border-[#ffca28] border-2"
           />
         </a>
       )}
 
       {floorplan2D && (
-        <a
-          href={floorplan2D}
-          title="2D Floorplan"
-          target="_blank"
-          rel="noopener"
-          class="relative bg-white bg-opacity-80 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
-          aria-label="View 2D floorplan"
-        >
-          <Icon
-            name="mdi:set-square"
-            class="w-9 h-9 text-[#708090] group-hover:text-[#ffca28] transition-colors duration-300 rounded"
-          />
-          <span class="absolute text-sm font-bold text-white drop-shadow-md">
-            2D
-          </span>
-        </a>
+        <div>
+          <a
+            href={floorplan2D}
+            title="2D Floorplan"
+            target="_blank"
+            rel="noopener"
+            class="relative bg-white bg-opacity-80 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
+            aria-label="View 2D floorplan"
+          >
+            <Icon
+              name="mdi:set-square"
+              class="w-9 h-9 text-[#708090] group-hover:text-[#ffca28] transition-colors duration-300 rounded"
+            />
+            <span class="absolute text-sm font-bold text-white drop-shadow-md">
+              2D
+            </span>
+          </a>
+        </div>
       )}
 
       {floorplan3D && (
-        <a
-          href={floorplan3D}
-          title="3D Floorplan"
-          target="_blank"
-          rel="noopener"
-          class="relative bg-white bg-opacity-70 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
-          aria-label="View 3D floorplan"
-        >
-          <Icon
-            name="mdi:set-square"
-            class="w-9 h-9 text-[#708090] group-hover:text-[#ffca28] transition-colors duration-300 rounded"
-          />
-          <span class="absolute text-sm font-bold text-white drop-shadow-md">
-            3D
-          </span>
-        </a>
+        <div>
+          <a
+            href={floorplan3D}
+            title="3D Floorplan"
+            target="_blank"
+            rel="noopener"
+            class="relative bg-white bg-opacity-70 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
+            aria-label="View 3D floorplan"
+          >
+            <Icon
+              name="mdi:set-square"
+              class="w-9 h-9 text-[#708090] group-hover:text-[#ffca28] transition-colors duration-300 rounded"
+            />
+            <span class="absolute text-sm font-bold text-white drop-shadow-md">
+              3D
+            </span>
+          </a>
+        </div>
       )}
     </div>
   </div>
@@ -156,11 +160,11 @@ const {
 </div>
 
 <style>
-#cardBG {
-    background-color: rgba(248, 250, 252, 0.93) !important;
-    color: black;
-}
-#badge {
-    color: #00a877;
-}
+  #cardBG {
+      background-color: rgba(248, 250, 252, 0.93) !important;
+      color: black;
+  }
+  #badge {
+      color: #00a877;
+  }
 </style>

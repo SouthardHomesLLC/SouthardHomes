@@ -17,25 +17,77 @@ const {
 
 <div
   id="cardBG"
-  class="max-w-xs min-w-[320px] rounded-xl overflow-hidden hover:scale-105"
+  class="relative max-w-xs min-w-[320px] rounded-xl overflow-hidden hover:scale-105"
 >
   <!-- Floorplan Image -->
-  <img
-    class="w-full"
-    src={floorplanImg}
-    alt={fpAlt}
-    loading="lazy"
+  <div class="relative">
+    <img
+      class="w-full"
+      src={floorplanImg}
+      alt={fpAlt}
+      loading="lazy"
   />
+    <!-- Floating Action Buttons -->
+    <div class="absolute top-2 right-2 flex flex-col items-end space-y-2">
+      {floorplanLink && (
+        <div>
+          <a
+            href={floorplanLink}
+            title="2D Floorplan"
+            target="_blank"
+            rel="noopener"
+            class="relative bg-white bg-opacity-80 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
+            aria-label="View 2D floorplan"
+          >
+          <Icon
+            name="mdi:set-square"
+            class="w-12 h-12 text-[#ffca28] transition-colors duration-300 rounded-lg
+              p-1 border-opacity-50 
+              group-hover:border-[#ffca28] group-hover:border-opacity-100 
+              group-hover:border-2 group-hover:scale-125 group-hover:transition group-hover:duration-500"
+          />
+          <span class="absolute text-sm font-bold">
+            2D
+          </span>
+          </a>
+        </div>
+      )}
+
+      {dfloorplanLink && (
+        <div>
+          <a
+            href={dfloorplanLink}
+            title="3D Floorplan"
+            target="_blank"
+            rel="noopener"
+            class="relative bg-white bg-opacity-70 text-black p-2 rounded-full hover:bg-opacity-90 transition flex items-center justify-center group"
+            aria-label="View 3D floorplan"
+          >
+            <Icon
+              name="mdi:set-square"
+              class="w-12 h-12 text-[#ffca28] transition-colors duration-300 rounded-lg
+              p-1 border-opacity-50 
+              group-hover:border-[#ffca28] group-hover:border-opacity-100 
+              group-hover:border-2 group-hover:scale-125 group-hover:transition group-hover:duration-500"
+            />
+            <span class="absolute text-sm font-bold">
+              3D
+            </span>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
 
   <!-- Floorplan Content -->
-  <div class="px-6 py-4 rounded">
+  <div class="absolute top-2 left-2 space-y-2">
     <!-- Name -->
-    <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-      <div class="text-xl font-bold">
-        {floorplanName}
-      </div>
+    <div class="text-xl font-bold">
+      {floorplanName}
     </div>
-
+  </div>
+  
+  <div class="px-6 py-4 rounded">
     <!-- Stats Row 1 -->
     <div class="font-prose flex items-center justify-between text-black">
       <div class="flex gap-1 align-top">
@@ -60,6 +112,7 @@ const {
   </div>
 
   <!-- Floorplan Buttons -->
+   <!-- 
   <div class="px-6 pt-4 pb-4 flex gap-2">
     <Link
       size="sm"
@@ -85,6 +138,7 @@ const {
       3D
     </Link>
   </div>
+   -->
 </div>
 
 <style>
