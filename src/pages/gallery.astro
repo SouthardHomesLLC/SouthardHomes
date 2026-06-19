@@ -14,7 +14,7 @@ import { sortedGallery } from "@scripts/gallery-scripts.ts";
       </Sectionhead>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6" id="photo-gallery">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="photo-gallery">
       {sortedGallery.map((item) => (
         <a 
           href={item.largeUrl} 
@@ -28,7 +28,7 @@ import { sortedGallery } from "@scripts/gallery-scripts.ts";
           flex-col 
           group 
           transition-transform 
-          duration-200
+          duration-600
           hover:scale-105
           hover:border-[#ffca28]
           hover:border-2"
@@ -37,7 +37,8 @@ import { sortedGallery } from "@scripts/gallery-scripts.ts";
                 <img 
                 src={item.url} 
                 alt="Southard Homes construction picture" 
-                class="w-full h-full object-cover group-hover:scale-102 
+                class="w-full h-full object-cover object-center 
+                  group-hover:scale-105
                   transition-transform duration-300"
                 loading="lazy"
                 />
