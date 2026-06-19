@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import { sortedGallery } from "../scripts/gallery-scripts.ts";
+import { sortedGallery } from "@scripts/gallery-scripts.ts";
 ---
 
 <Layout title="Gallery">
@@ -24,27 +24,28 @@ import { sortedGallery } from "../scripts/gallery-scripts.ts";
           class="bg-black 
           rounded-lg 
           overflow-hidden 
-          border-2 
-          border-zinc-800 
           flex 
           flex-col 
           group 
           transition-transform 
           duration-200
           hover:scale-105
-          hover:border-[#ffca28]"
+          hover:border-[#ffca28]
+          hover:border-2"
         >
             <div class="aspect-video w-full overflow-hidden">
                 <img 
                 src={item.url} 
                 alt="Southard Homes construction picture" 
-                class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                class="w-full h-full object-cover group-hover:scale-102 
+                  transition-transform duration-300"
                 loading="lazy"
                 />
             </div>
             
             <!-- 
-            <div class="p-4 text-white mt-auto bg-black hidden md:flex justify-between items-center text-sm">
+            <div class="p-4 text-white mt-auto bg-black hidden 
+              md:flex justify-between items-center text-sm">
                 <span>Date added: {item.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
             </div>
             -->

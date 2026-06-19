@@ -1,9 +1,9 @@
-// 1. Import definition utilities from the standard v6/v7 content endpoint
+//Import definition utilities from the standard v6/v7 content endpoint
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders'; 
 import { z } from 'astro/zod';
 
-// 2. Define your collection(s)
+//Define collection(s)
 const blogCollection = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/blog" }),
   schema: z.object({
@@ -35,7 +35,7 @@ const teamCollection = defineCollection({
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
+//Export a single `collections` object to register collection(s)
 export const collections = {
   'blog': blogCollection,
   'team': teamCollection,
