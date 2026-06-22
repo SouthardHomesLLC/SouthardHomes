@@ -2,7 +2,8 @@
 import ListingCard from './ListingCard.astro';
 ---
 
-<div class="mt-4 flex flex-wrap flex-col md:flex-row gap-4 md:mx-0">
+<div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
+  gap-6 justify-items-center md:mx-0" id="listings-gallery">
 
 <!-- <h2>No Homes Listed. Check back later.</h2> -->
 <ListingCard
@@ -66,3 +67,16 @@ import ListingCard from './ListingCard.astro';
   />
   
 </div>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#listings-gallery',
+    children: 'a.pswp-link', // Target only the 2D/3D floorplan circles
+    pswpModule: () => import('photoswipe')
+  });
+  
+  lightbox.init();
+</script>

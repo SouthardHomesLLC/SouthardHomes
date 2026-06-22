@@ -6,21 +6,20 @@ const {
     listingImg, listingAlt, listingAddress, listingCityZip, 
     listingPrice, lBeds, lBath, lGarage, lsqFt, 
     listPerkFirst, listPerkSecond, listPerkThird, 
-    listingLink, priceUpdate, videoTourLink, floorplan2D, floorplan3D 
+    listingLink, priceUpdate, videoTourLink, floorplan2D, floorplan3D,
+    fpWidth = "1200",
+    fpHeight = "900"
 } = Astro.props;
 ---
 
 <div
   id="cardBG"
-  class="relative max-w-xs rounded-xl overflow-hidden shadow-lg duration-700 hover:scale-105"
+  class="relative w-full max-w-sm rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 flex flex-col h-full"
 >
-  <!-- Listing Image -->
   <div class="relative">
-    <img class="w-full" src={listingImg} alt={listingAlt} />
+    <img class="w-full object-cover aspect-[4/3]" src={listingImg} alt={listingAlt || "Real estate property listing picture"} loading="lazy" />
 
-    <!-- Floating Action Buttons -->
-    <div class="absolute top-2 right-2 flex flex-col items-end space-y-2">
-      <!-- Video Tour Button -->
+    <div class="absolute top-2 right-2 flex flex-col items-end space-y-2 z-10">
       {videoTourLink && (
         <a
           href={videoTourLink}
@@ -31,36 +30,26 @@ const {
         >
           <Icon
             name="fluent:video-clip-20-filled"
-            class="w-10 h-10 drop-shadow-lg text-white group-hover:text-[#ffca28] 
-            transition-colors duration-300 hover:border-[#ffca28] border-2"
+            class="w-10 h-10 drop-shadow-lg text-white group-hover:text-[#ffca28] transition-colors duration-300"
           />
         </a>
       )}
 
-      <!-- Floor Plans -->
       {floorplan2D && (
         <div>
           <a
             href={floorplan2D}
-            title="2D Floorplan"
-            target="_blank"
-            rel="noopener"
-            class="relative bg-white bg-opacity-80 text-black p-2 
-              rounded-full hover:bg-opacity-90 transition flex 
-              items-center justify-center group"
-            aria-label="View 2D floorplan"
+            title="Open 2D Floorplan"
+            class="pswp-link relative bg-white bg-opacity-80 text-black p-2 rounded-full hover:bg-opacity-100 transition flex items-center justify-center group"
+            data-pswp-width={fpWidth}
+            data-pswp-height={fpHeight}
+            aria-label="View 2D floorplan popup"
           >
             <Icon
               name="mdi:set-square"
-              class="w-12 h-12 text-[#ffca28] transition-colors duration-300 rounded-lg
-                p-1 border-opacity-50 
-                group-hover:border-[#ffca28] group-hover:border-opacity-100 
-                group-hover:border-2 group-hover:scale-125 
-                group-hover:transition group-hover:duration-500"
+              class="w-12 h-12 text-[#ffca28] transition-all duration-300 rounded-lg p-1 group-hover:scale-125"
             />
-            <span class="absolute text-sm font-bold text-white drop-shadow-md">
-              2D
-            </span>
+            <span class="absolute text-sm font-bold select-none text-slate-800">2D</span>
           </a>
         </div>
       )}
@@ -69,105 +58,62 @@ const {
         <div>
           <a
             href={floorplan3D}
-            title="3D Floorplan"
-            target="_blank"
-            rel="noopener"
-            class="relative bg-white bg-opacity-80 text-black p-2 
-              rounded-full hover:bg-opacity-90 transition flex 
-              items-center justify-center group"
-            aria-label="View 3D floorplan"
+            title="Open 3D Floorplan"
+            class="pswp-link relative bg-white bg-opacity-80 text-black p-2 rounded-full hover:bg-opacity-100 transition flex items-center justify-center group"
+            data-pswp-width={fpWidth}
+            data-pswp-height={fpHeight}
+            aria-label="View 3D floorplan popup"
           >
             <Icon
               name="mdi:set-square"
-              class="w-12 h-12 text-[#ffca28] transition-colors duration-300 rounded-lg
-                p-1 border-opacity-50 
-                group-hover:border-[#ffca28] group-hover:border-opacity-100 
-                group-hover:border-2 group-hover:scale-125 
-                group-hover:transition group-hover:duration-500"
+              class="w-12 h-12 text-[#ffca28] transition-all duration-300 rounded-lg p-1 group-hover:scale-125"
             />
-            <span class="absolute text-sm font-bold text-white drop-shadow-md">
-              3D
-            </span>
+            <span class="absolute text-sm font-bold select-none text-slate-800">3D</span>
           </a>
         </div>
       )}
     </div>
   </div>
 
-  <!-- Card Content -->
-  <div class="px-6 py-4 rounded">
-    <!-- Price -->
-    <div class="flex justify-between align-middle text-xl mb-2">
-      <div>
+  <div class="px-6 py-4 flex-1 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center text-xl mb-3">
         <b>{listingPrice}</b>
-        <span
-          id="badge"
-          class="whitespace-nowrap rounded-full px-4 py-3 align-top leading-none font-prose"
-        >
-          {priceUpdate}
-        </span>
-      </div>
-    </div>
-
-    <!-- Beds and Baths -->
-    <div class="font-prose flex-1 flex items-center justify-between bg-black">
-      <div class="flex gap-1 align-top">
-        <b>{lBeds}</b> Bed
+        {priceUpdate && (
+          <span id="badge" class="whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider font-prose">
+            {priceUpdate}
+          </span>
+        )}
       </div>
 
-      <div class="flex gap-1 align-top">
-        <b>{lBath}</b> Bath
-      </div>
-    </div>
+      <div class="space-y-2 text-slate-800 text-sm">
+        <div class="font-prose flex items-center justify-between">
+          <div class="flex gap-1"><b>{lBeds}</b> Bed</div>
+          <div class="flex gap-1"><b>{lBath}</b> Bath</div>
+        </div>
 
-    <!-- Garage & SqFt -->
-    <div class="font-prose flex-1 flex items-center justify-between bg-black">
-      <div class="flex gap-1 align-top">
-        <b>{lsqFt}</b> SqFt
-      </div>
-
-      <div class="flex gap-1 align-top">
-        <b>{lGarage}</b>
-      </div>
-    </div>
-
-    <!-- Address -->
-    <div class="pt-4">
-      <div class="flex-start font-prose">
-        {listingAddress}
-
-        <div class="flex-start font-prose">
-          {listingCityZip}
+        <div class="font-prose flex items-center justify-between">
+          <div class="flex gap-1"><b>{lsqFt}</b> SqFt</div>
+          <div class="flex gap-1"><b>{lGarage || "No Garage"}</b></div>
         </div>
       </div>
+
+      <div class="pt-4 text-slate-700 font-prose text-sm leading-relaxed">
+        <div>{listingAddress}</div>
+        <div class="text-slate-500">{listingCityZip}</div>
+      </div>
     </div>
 
-    <!-- Hidden Perks -->
-    <div class="pt-4 pb-2 hidden">
-      <span class="inline-block rounded-full px-3 py-1 text-sm font-serif text-gray-700 mr-2 mb-2">
-        {listPerkFirst}
-      </span>
-
-      <span class="inline-block rounded-full px-3 py-1 text-sm font-serif text-gray-700 mr-2 mb-2">
-        {listPerkSecond}
-      </span>
-
-      <span class="inline-block rounded-full px-3 py-1 text-sm font-serif text-gray-700 mr-2 mb-2">
-        {listPerkThird}
-      </span>
-    </div>
-
-    <!-- CTA (Call to Action) -->
-    <div class="px-6 pt-4 pb-2 hover:animate-pulse">
+    <div class="pt-6 hover:animate-pulse">
       <Link
         size="lg"
         style="outline"
         rel="noopener"
         href={listingLink}
-        class="flex gap-1 items-center justify-center bg-[#ffca28] border-none drop-shadow-md"
+        class="w-full flex gap-1 items-center justify-center bg-[#ffca28] border-none drop-shadow-md text-black font-semibold"
         target="_blank"
       >
-        <Icon name="fluent:real-estate-20-filled" />
+        <Icon name="fluent:real-estate-20-filled" class="w-5 h-5" />
         View Listing
       </Link>
     </div>
@@ -176,10 +122,11 @@ const {
 
 <style>
   #cardBG {
-      background-color: rgba(248, 250, 252, 0.93) !important;
-      color: black;
+    background-color: rgba(248, 250, 252, 0.93) !important;
+    color: black;
   }
   #badge {
-      color: #00a877;
+    color: #00a877;
+    background-color: rgba(0, 168, 119, 0.1);
   }
 </style>
