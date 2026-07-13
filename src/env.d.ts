@@ -11,3 +11,10 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+interface Window {
+    goatcounter?: {
+        count: (options?: { path?: string; title?: string; referrer?: string }) => void;
+        allow_local?: boolean;
+    };
+}
