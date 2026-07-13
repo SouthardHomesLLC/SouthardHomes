@@ -33,20 +33,7 @@ const makeTitle = title
     <meta property="og:image" content="https://southardhomesllc.com/opengraph.jpg" />
 
     <script is:inline data-goatcounter="https://southardhomesllc.goatcounter.com/count"
-      data-goatcounter-settings='{"no_onload": true}'
-      async src="//gc.zgo.at/count.js">
-    </script>
-
-    <script>
-        // This handles Astro's page lifecycle events
-        document.addEventListener('astro:page-load', () => {
-            // Check if window.goatcounter exists and has the count function
-            if (window.goatcounter && typeof window.goatcounter.count === 'function') {
-                window.goatcounter.count({
-                    path: location.pathname + location.search
-                });
-            }
-        });
+      async src="https://gc.zgo.at/count.js">
     </script>
     
     <SEO
